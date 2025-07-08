@@ -273,5 +273,8 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+        <div class="text-center mt-5">
+            <a href="{{ route('admin.login') }}" class="btn btn-primary" style="padding: 12px 32px; font-size: 1.25rem;">دخول المديرين</a>
+        </div>
     </body>
 </html>

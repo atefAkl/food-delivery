@@ -26,6 +26,7 @@ use App\Http\Controllers\API\OtpLoginController;
 // ==================== Orders, Cart, Payment ====================
 use App\Http\Controllers\API\Chef\ChefController;
 use App\Http\Controllers\API\Chef\DishController;
+use App\Http\Controllers\API\ChefOrderController;
 use App\Http\Controllers\API\SocialAuthController;
 
 // ==================== Reviews ====================
@@ -131,7 +132,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/conversations/{conversationId}', 'show');
         Route::delete("messages/{messageId}/destroy", 'destroyMessage');
         Route::post('/conversation/typing-status', 'typingStatus');
-
     });
 
     // Chef Orders

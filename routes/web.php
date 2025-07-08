@@ -15,7 +15,4 @@ use App\Http\Controllers\Web\MealController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-//Route::get('/chat-test', function () {
-//    return view('chat');
-//});
+require base_path('routes/admin.php');
