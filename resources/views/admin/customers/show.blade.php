@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h5><i class="icofont icofont-ui-home bg-c-yellow card1-icon"></i>{{__('Customer Details')}}</h5>
+        <h5><i class="icofont icofont-cart bg-primary icon-xl"></i>{{__('Customer Details')}}</h5>
         <span>This page display all <code>customer</code> details</span>
 
     </div>

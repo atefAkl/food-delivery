@@ -1,4 +1,3 @@
-<i class="icofont icofont-dollar"></i>
 <!-- card1 start -->
 <div class="col-md-6 col-xl-3">
     <div class="card widget-card-1">
@@ -20,12 +19,12 @@
 <div class="col-md-6 col-xl-3">
     <div class="card widget-card-1">
         <div class="card-block-small">
-            <i class="icofont icofont-ui-dollar bg-c-yellow card1-icon"></i>
-            <span class="text-c-yellow f-w-600">Expenses</span>
+            <i class="icofont icofont-credit-card bg-secondary card1-icon"></i>
+            <span class="text-c-black f-w-600">Expenses</span>
             <h4>$6051</h4>
             <div>
                 <span class="f-left m-t-10 text-muted">
-                    <i class="text-c-yellow f-16 icofont icofont-info m-r-10"></i>Total expenses on orders
+                    <i class="text-c-dark f-16 icofont icofont-info m-r-10"></i>Total expenses on orders
                     <a href="javascript:void(0);" class="btn text-primary btn-sm"><i class="text-c-blue f-16 icofont icofont-arrow-right m-r-10"></i>See More Info</a>
                 </span>
             </div>
