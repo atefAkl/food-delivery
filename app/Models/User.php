@@ -70,19 +70,22 @@ class User extends Authenticatable
 
 
     public function cart()
-{
-    return $this->hasOne(Cart::class, 'customer_id');
-}
+    {
+        return $this->hasOne(Cart::class, 'customer_id');
+    }
 
-public function favorites()
-{
-    return $this->hasMany(Favorite::class, 'customer_id');
-}
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'customer_id');
+    }
 
-public function addresses()
-{
-    return $this->hasMany(Address::class, 'customer_id');
-}
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'customer_id');
+    }
 
-
+    public function defaultAddress()
+    {
+        return $this->addresses()->where('is_default', true)->first();
+    }
 }

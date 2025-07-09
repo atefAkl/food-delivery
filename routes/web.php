@@ -15,4 +15,6 @@ use App\Http\Controllers\Web\MealController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Include admin routes directly
 require base_path('routes/admin.php');

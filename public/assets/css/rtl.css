@@ -1,0 +1,318 @@
+/* RTL Support for Arabic Language */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navbar RTL Fixes */
+.navbar-nav {
+    padding-right: 0;
+}
+
+.navbar .navbar-nav .nav-item {
+    float: right;
+}
+
+.navbar-nav > li {
+    float: right;
+}
+
+/* Header Notification RTL */
+.header-notification .show-notification {
+    left: 0;
+    right: auto;
+}
+
+.header-notification .profile-notification {
+    left: 0;
+    right: auto;
+}
+
+/* Sidebar RTL */
+.pcoded-navbar {
+    direction: rtl;
+}
+
+.pcoded .pcoded-navbar .pcoded-item > li > a {
+    text-align: right;
+}
+
+.pcoded .pcoded-navbar .pcoded-item .pcoded-hasmenu .pcoded-submenu {
+    padding-right: 40px;
+    padding-left: 0;
+}
+
+.pcoded .pcoded-navbar .pcoded-item > li > a > .pcoded-micon {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.pcoded .pcoded-navbar .pcoded-item > li > a > .pcoded-mtext {
+    float: right;
+}
+
+/* Card RTL */
+.card-header-right {
+    left: 10px;
+    right: auto;
+}
+
+.card-header-left {
+    right: 10px;
+    left: auto;
+}
+
+/* Form Controls RTL */
+.form-control {
+    text-align: right;
+}
+
+.input-group .form-control:first-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.input-group .input-group-addon:last-child {
+    border-radius: 4px 0 0 4px;
+}
+
+/* Table RTL */
+.table th, .table td {
+    text-align: right;
+}
+
+/* Checkbox and Radio RTL */
+.checkbox-fade label {
+    padding-right: 30px;
+    padding-left: 0;
+}
+
+.checkbox-fade label:before, .checkbox-fade label:after {
+    right: 0;
+    left: auto;
+}
+
+/* Alert RTL */
+.alert {
+    text-align: right;
+}
+
+/* Dropdown RTL */
+.dropdown-menu {
+    text-align: right;
+}
+
+.dropdown-item {
+    text-align: right;
+}
+
+/* Breadcrumb RTL */
+.breadcrumb-item {
+    float: right;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    padding-left: 0.5rem;
+    padding-right: 0;
+}
+
+/* Pagination RTL */
+.pagination {
+    padding-right: 0;
+}
+
+.page-item:first-child .page-link {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.page-item:last-child .page-link {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+/* Float Classes RTL */
+.f-left {
+    float: right !important;
+}
+
+.f-right {
+    float: left !important;
+}
+
+/* Text Alignment RTL */
+.text-left {
+    text-align: right !important;
+}
+
+.text-right {
+    text-align: left !important;
+}
+
+/* Margin and Padding RTL */
+.m-r-0 {
+    margin-left: 0px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-5 {
+    margin-left: 5px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-10 {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-15 {
+    margin-left: 15px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-20 {
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-30 {
+    margin-left: 30px !important;
+    margin-right: 0 !important;
+}
+
+.m-r-40 {
+    margin-left: 40px !important;
+    margin-right: 0 !important;
+}
+
+.m-l-0 {
+    margin-right: 0px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-5 {
+    margin-right: 5px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-10 {
+    margin-right: 10px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-15 {
+    margin-right: 15px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-20 {
+    margin-right: 20px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-30 {
+    margin-right: 30px !important;
+    margin-left: 0 !important;
+}
+
+.m-l-40 {
+    margin-right: 40px !important;
+    margin-left: 0 !important;
+}
+
+.p-r-0 {
+    padding-left: 0px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-5 {
+    padding-left: 5px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-10 {
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-15 {
+    padding-left: 15px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-20 {
+    padding-left: 20px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-30 {
+    padding-left: 30px !important;
+    padding-right: 0 !important;
+}
+
+.p-r-40 {
+    padding-left: 40px !important;
+    padding-right: 0 !important;
+}
+
+.p-l-0 {
+    padding-right: 0px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-5 {
+    padding-right: 5px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-10 {
+    padding-right: 10px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-15 {
+    padding-right: 15px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-20 {
+    padding-right: 20px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-30 {
+    padding-right: 30px !important;
+    padding-left: 0 !important;
+}
+
+.p-l-40 {
+    padding-right: 40px !important;
+    padding-left: 0 !important;
+}
+
+/* Border Radius RTL */
+.b-radius-left {
+    border-radius: 0 30px 30px 0 !important;
+}
+
+.b-radius-right {
+    border-radius: 30px 0 0 30px !important;
+}
+
+/* Notifications RTL */
+.notification-ui_dd-content {
+    left: 0;
+    right: auto;
+}
+
+/* User Profile RTL */
+.user-profile .user-details {
+    text-align: right;
+}
+
+/* Mobile Menu RTL */
+.mobile-menu {
+    float: right;
+}
+
+.mobile-options {
+    float: left;
+}

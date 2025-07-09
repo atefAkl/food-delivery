@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
+use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -32,14 +33,14 @@ class AdminSeeder extends Seeder
         ];
 
         foreach (['Super Admin', 'Manager', 'Content Admin'] as $role) {
-            \Spatie\Permission\Models\Role::firstOrCreate([
+            Role::firstOrCreate([
                 'name' => $role,
                 'guard_name' => 'admin',
             ]);
         }
 
         foreach ($admins as $admin) {
-            $adminModel = Admin::updateOrCreate([
+            Admin::updateOrCreate([
                 'email' => $admin['email']
             ], $admin);
         }

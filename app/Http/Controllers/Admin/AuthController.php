@@ -10,11 +10,15 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
+        if (auth('admin')->check()) {
+            return redirect()->route('admin.dashboard');
+        }
         return view('admin.auth.login');
     }
 
     public function login(Request $request)
     {
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],

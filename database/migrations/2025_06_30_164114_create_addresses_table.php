@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->integer('post_code');
-            $table->text('address_text');
-            $table->string('street');
+            $table->integer('post_code')->nullable();
+            $table->text('address_text')->nullable();
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
             $table->integer('appartment')->nullable();
             $table->string('lable')->nullable();
             $table->boolean('is_default')->default(false);

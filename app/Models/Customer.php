@@ -33,6 +33,11 @@ class Customer extends Model
         return $this->hasMany(Address::class);
     }
 
+    public function defaultAddress()
+    {
+        return $this->addresses->where('default', true)->first();
+    }
+
     /**
      * Get the cart for the customer.
      */
@@ -61,5 +66,4 @@ class Customer extends Model
     {
         return $this->hasMany(Conversation::class);
     }
-
 }
