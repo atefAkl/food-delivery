@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <!-- Authentication card start -->
                 <div class="login-card card-block auth-body mr-auto ml-auto">
-                    <form class="md-float-material" method="POST" action="{{ route('admin.auth') }}">
+                    <form class="md-float-material" method="POST" action="{{ route('auth') }}">
                         @csrf
 
                         <div class="text-center">
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                    <a href="{{ route('admin.password.reset') }}" class="text-right f-w-600 text-inverse">
+                                    <a href="{{ route('password.reset') }}" class="text-right f-w-600 text-inverse">
                                         {{ session('locale', config('app.locale')) === 'ar' ? 'نسيت كلمة المرور؟' : 'Forgot Your Password?' }}</a>
                                 </div>
                             </div>

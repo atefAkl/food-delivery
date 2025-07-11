@@ -12,12 +12,12 @@ class CustomerController extends Controller
     public function index()
     {
         $data = User::where('type', 'customer')->with('customer')->get();
-        return view('admin.customers.index', compact('data'));
+        return view('admin.partners.customers.index', compact('data'));
     }
 
     public function show($id)
     {
         $data = User::where('type', 'customer')->with('customer')->find($id);
-        return view('admin.customers.show', compact('data'));
+        return view('admin.partners.customers.show', compact('data'));
     }
 }

@@ -11,7 +11,7 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         if (auth('admin')->check()) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('dashboard');
         }
         return view('admin.auth.login');
     }
@@ -26,7 +26,7 @@ class AuthController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('admin-dashboard'));
         }
 
         return back()->withErrors([
@@ -39,6 +39,6 @@ class AuthController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
 }
