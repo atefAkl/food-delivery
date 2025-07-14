@@ -12,7 +12,7 @@ Route::prefix('admin')->name('admin-')->group(function () {
     Route::middleware('guest:admin')->group(function () {
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'login'])->name('auth');
-        Route::post('password/reset', [AuthController::class, 'resetPassword'])->name('password.reset');
+        Route::post('password/reset', [AuthController::class, 'resetPassword'])->name('password-reset');
     });
 
     // جميع صفحات الادمن هنا محمية بauth:admin ولا يمكن الوصول إليها إلا بعد تسجيل الدخول

@@ -1768,6 +1768,12 @@
     @endif
     <div class="text-center mt-5">
         <a href="{{ route('admin-dashboard') }}" class="btn btn-primary" style="padding: 12px 32px; font-size: 1.25rem;">دخول المديرين</a>
+        <a href="{{ route('admin-login') }}" class="btn btn-secondary ms-3" style="padding: 12px 32px; font-size: 1.25rem;">تسجيل الدخول</a>
+    </div>
+
+    <!-- login link -->
+    <div class="text-center mt-5">
+        <a href="{{ route('admin-login') }}" class="btn btn-primary" style="padding: 12px 32px; font-size: 1.25rem;">دخول المستخدمين</a>
     </div>
 </body>
 
