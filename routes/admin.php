@@ -90,7 +90,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // أي محاولة دخول لمسار غير معرف داخل /admin سيتم تحويله لصفحة تسجيل الدخول
-    Route::fallback(function () {
-        return redirect()->route('admin-login');
-    });
+});
+Route::fallback(function () {
+    return redirect()->route('admin-login');
 });
