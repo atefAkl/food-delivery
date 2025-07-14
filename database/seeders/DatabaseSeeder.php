@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // Run seeders in the correct order to maintain foreign key relationships
         $this->call([
-            AdminSeeder::class,
+            AdminsTableSeeder::class,    // إنشاء المشرفين وملفاتهم الشخصية
             AddressesTableSeeder::class,
             UserSeeder::class,          // Create users first (for chefs)
             CategorySeeder::class,      // Create categories

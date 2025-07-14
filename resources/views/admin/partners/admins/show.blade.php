@@ -2,17 +2,17 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h5><i class="icofont icofont-cart bg-primary icon-xl"></i>{{__('Customer Details')}}</h5>
-        <span>This page display all <code>customer</code> details</span>
+        <h4><i class="icofont icofont-cart bg-primary icon-xl px-2 rounded mr-3"></i>{{$data->name}} {{__('Details')}}</h4>
+        <span>{{__('This page display all restaurant details')}}</span>
 
     </div>
 </div>
 <div class="row">
-    @include('admin.customers.stats')
+    @include('admin.restaurants.stats')
 </div>
 <div class="card">
-    <div class="card-header">
-        <h5><i class="icofont icofont-card"></i>{{__('Basic Info')}}</h5>
+    <div class="card-header pb-0">
+        <h4><i class="icofont icofont-card icon-xl rounded mr-3"></i>{{__('Basic Info')}}</h4>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="icofont icofont-simple-left"></i></li>
@@ -22,10 +22,11 @@
                 <li><i class="icofont icofont-error close-card"></i></li>
             </ul>
         </div>
+        <hr />
     </div>
     <div class="card-body">
         <!-- basic Info -->
-        <div class="row">
+        <div class="row py-0">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">{{__('Name')}}</label>
