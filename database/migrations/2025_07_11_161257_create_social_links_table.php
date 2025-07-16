@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('label', 45)->nullable(); // varchar(45) null
             $table->string('link', 255)->nullable(false); // varchar(255) not null
             $table->string('icon', 45)->nullable(); // varchar(45) null
+            $table->dateTime('created_at')->nullable(); // varchar(45) null
+            $table->dateTime('updated_at')->nullable(); // varchar(45) null
             $table->unsignedBigInteger('admin_id'); // bigint unsigned not null
         });
     }

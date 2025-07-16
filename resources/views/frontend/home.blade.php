@@ -163,7 +163,7 @@
 </section>
 
 <!-- قسم الاشتراك في النشرة البريدية -->
-<section class="bg-light p-5 rounded-3">
+<section id="contact" class="bg-light p-5 rounded-3">
     <div class="row align-items-center">
         <div class="col-md-6 mb-4 mb-md-0">
             <h3>اشترك في نشرتنا البريدية</h3>

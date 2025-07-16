@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -15,22 +18,29 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-    public const ADMIN = '/admin';
+    public const ADMIN_DASHBOARD = '/admin/dashboard';
+    public const CUSTOMER_DASHBOARD = '/customer/dashboard';
+    public const CHEF_DASHBOARD = '/chef/dashboard';
 
     /**
-     * The path to the "admin dashboard" route for your application.
-     *
-     * @var string
+     * Define your route model bindings, pattern filters, and other route configuration.
      */
-    public const ADMIN_DASHBOARD = '/admin/dashboard';
-
     public function boot(): void
     {
+        // ملاحظة: تسجيل web.php فقط
+        // وهو يضم بدوره ملفات admin.php و frontend.php لتجنب التكرار
         $this->routes(function () {
+            // الطريقة الصحيحة لتسجيل المسارات - كل نوع على حدة
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
-            
-            // Admin routes are now included directly in web.php
+                
+            // تم التعليق على هذه المسارات لأنها مضمنة بالفعل في web.php
+            // وتسجيلها مرة أخرى هنا يسبب تسجيلها مرتين
+            // Route::middleware('web')
+            //    ->prefix('admin')
+            //    ->group(base_path('routes/admin.php'));
+            // Route::middleware('web')
+            //    ->group(base_path('routes/chef.php'));
         });
     }
 }

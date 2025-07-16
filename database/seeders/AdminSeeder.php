@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Admin;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
@@ -28,7 +29,7 @@ class AdminSeeder extends Seeder
                 'name' => 'Content Admin',
                 'email' => 'contentadmin@example.com',
                 'password' => Hash::make('Password@123'),
-
+                'type' => 'admin',
             ],
         ];
 
@@ -40,8 +41,10 @@ class AdminSeeder extends Seeder
         }
 
         foreach ($admins as $admin) {
-            Admin::updateOrCreate([
-                'email' => $admin['email']
+            User::updateOrCreate([
+                'email' => $admin['email'],
+                'password' => $admin['password'],
+                'type' => 'admin',
             ], $admin);
         }
     }

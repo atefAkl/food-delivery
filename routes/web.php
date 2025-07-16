@@ -16,8 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Include admin routes directly
+// تضمين مسارات الإدارة مباشرة
 require base_path('routes/admin.php');
 
-// Include frontend routes for chefs and customers
+// تضمين مسارات الواجهة الأمامية
 require base_path('routes/frontend.php');

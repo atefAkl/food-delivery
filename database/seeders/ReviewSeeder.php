@@ -14,18 +14,20 @@ class ReviewSeeder extends Seeder
     public function run(): void
     {
 
+        // إنشاء تقييمات إيجابية
         Review::factory()
             ->count(10)
             ->positive()
             ->create();
 
-
+        // إنشاء تقييمات سلبية
         Review::factory()
             ->count(5)
             ->negative()
             ->create();
 
 
+        // إنشاء تقييمات بتقييم محدد
         Review::factory()
             ->count(3)
             ->rating(1)

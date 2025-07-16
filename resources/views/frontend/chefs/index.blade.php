@@ -20,7 +20,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h2>استكشف أفضل الشيفات</h2>
                 <div>
-                    <a href="{{ route('frontend.dishes') }}" class="btn btn-outline-primary">
+                    <a href="{{ route('frontend.search') }}" class="btn btn-outline-primary">
                         <i class="fas fa-utensils me-2"></i> تصفح الأطباق
                     </a>
                 </div>
@@ -114,10 +114,10 @@
                         </div>
                         <div class="card-footer bg-white border-top-0">
                             <div class="d-grid gap-2">
-                                <a href="{{ route('frontend.chef.show', $chef->id) }}" class="btn btn-outline-primary">
+                                <a href="{{ route('frontend.chefs.profile', $chef->id) }}" class="btn btn-outline-primary">
                                     <i class="fas fa-user-chef me-2"></i> عرض الملف الشخصي
                                 </a>
-                                <a href="{{ route('frontend.chef.dishes', $chef->id) }}" class="btn btn-primary">
+                                <a href="{{ route('frontend.chefs.profile', $chef->id) }}" class="btn btn-primary">
                                     <i class="fas fa-utensils me-2"></i> عرض الأطباق
                                 </a>
                             </div>

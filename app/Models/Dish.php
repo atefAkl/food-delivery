@@ -73,6 +73,12 @@ class Dish extends Model
         return $this->hasMany(Favorite::class);
     }
 
+    // get all orders for the dish
+    public function orders()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     /**
      * Get the reviews for the dish.
      */

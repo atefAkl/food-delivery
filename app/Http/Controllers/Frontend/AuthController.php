@@ -35,18 +35,23 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        
+
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            
+
             // توجيه المستخدم حسب نوعه
-            $user = Auth::user();
+            $user = User::find(Auth::id());
+            $user->assignRole($user->type);
             if ($user->type === 'customer') {
-                return redirect()->route('frontend.customer.dashboard');
+                return redirect('/customer/dashboard');
             } elseif ($user->type === 'chef') {
-                return redirect()->route('frontend.chef.dashboard');
+                return redirect('/chef/dashboard');
+            } elseif ($user->type === 'admin') {
+                return redirect()->route('admin-dashboard');
             }
-            
+
+
+
             return redirect()->intended(route('frontend.home'));
         }
 
@@ -72,7 +77,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:20|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed'],
             'type' => 'required|in:customer,chef',
         ]);
 
@@ -82,8 +87,11 @@ class AuthController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'type' => $request->type,
+            'type' => $request->type, // سيتم تعيين الدور تلقائيًا عبر setTypeAttribute
         ]);
+
+        // تأكد من تعيين الدور بشكل صريح (لضمان عمل الصلاحيات)
+        $user->assignRole($request->type);
 
         // إنشاء ملف تعريف حسب نوع المستخدم
         if ($request->type === 'customer') {

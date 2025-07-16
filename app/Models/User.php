@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use  HasFactory, Notifiable, HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -67,6 +68,13 @@ class User extends Authenticatable
         return $this->hasOne(Chef::class, 'id');
     }
 
+    /**
+     * Get the admin profile if user is an admin.
+     */
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'id');
+    }
 
 
     public function cart()
@@ -90,13 +98,41 @@ class User extends Authenticatable
     }
     
     /**
-     * التحقق مما إذا كان المستخدم يملك دورًا معينًا
-     *
-     * @param string $role
-     * @return bool
+     * تعيين الدور للمستخدم عند تحديد النوع
+     * 
+     * @param string $type
+     * @return void
      */
-    public function hasRole(string $role): bool
+    public function setTypeAttribute($type)
     {
-        return $this->type === $role;
+        $this->attributes['type'] = $type;
+        
+        // إضافة الدور المناسب تلقائيًا عند تحديد النوع للمستخدم الموجود
+        if ($this->id) {
+            $this->syncRoles([$type]);
+        }
+    }
+    
+    /**
+     * تسجيل الدالة التي تعمل عند بدء النموذج
+     */
+    protected static function booted()
+    {
+        // إضافة الدور تلقائياً عند إنشاء مستخدم جديد
+        static::created(function ($user) {
+            if ($user->type) {
+                $user->assignRole($user->type);
+            }
+        });
+    }
+    
+    /**
+     * احصل على الدور الأساسي للمستخدم (متوافق مع حقل type)
+     * 
+     * @return string|null
+     */
+    public function getPrimaryRoleAttribute()
+    {
+        return $this->type;
     }
 }

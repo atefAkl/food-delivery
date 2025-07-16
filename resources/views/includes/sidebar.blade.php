@@ -15,7 +15,7 @@
                     <li class="more-details">
                         <a href="/profile"><i class="ti-user"></i>View Profile</a>
                         <a href="/admin/settings"><i class="ti-settings"></i>Settings</a>
-                        <a href="{{ route('admin-logout') }}"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                        <a href="{{ route('admin.logout') }}"><i class="ti-layout-sidebar-left"></i>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -30,7 +30,7 @@
         <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="active">
-                <a href="{{ route('admin-dashboard') }}">
+                <a href="{{ route('admin.dashboard') }}">
                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                     <span class="pcoded-mcaret"></span>
@@ -45,29 +45,29 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
-                    <li class="{{ Route::is('admin-customers-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-customers-list') }}">
+                    <li class="{{ Route::is('admin.customers.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.customers.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Customers</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Route::is('admin-restaurants-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-restaurants-list') }}">
+                    <li class="{{ Route::is('admin.restaurants.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.restaurants.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Restaurants</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Route::is('admin-admins-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-admins-list') }}">
+                    <li class="{{ Route::is('admin.admins.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.admins.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Admins</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Route::is('admin-deliveries-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-deliveries-list') }}">
+                    <li class="{{ Route::is('admin.deliveries.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.deliveries.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Deliveries</span>
                             <span class="pcoded-mcaret"></span>
@@ -75,24 +75,52 @@
                     </li>
                 </ul>
             </li>
+            
+            {{-- User Interfaces --}}
+            <li class="pcoded-hasmenu {{ Route::is('admin.interfaces.*') ? 'pcoded-trigger active pcoded-trigger' : '' }}">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-layout-media-overlay"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">{{__('Interfaces')}}</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="{{ Route::is('admin.interfaces.customer') ? 'active' : '' }}">
+                        <a href="{{ url('/customer') }}" target="_blank">
+                            <span class="pcoded-micon"><i class="ti-user"></i></span>
+                            <span class="pcoded-mtext">{{__('Customer Interface')}}</span>
+                            <span class="pcoded-badge label label-info">NEW</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="{{ Route::is('admin.interfaces.chef') ? 'active' : '' }}">
+                        <a href="{{ url('/chef') }}" target="_blank">
+                            <span class="pcoded-micon"><i class="ti-crown"></i></span>
+                            <span class="pcoded-mtext">{{__('Chef Interface')}}</span>
+                            <span class="pcoded-badge label label-info">NEW</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
             {{-- Interactions --}}
             <li
-                class="pcoded-hasmenu {{ Route::is('admin-orders-*') || Route::is('admin-reviews-*') || Route::is('admin-deliveries-*') || Route::is('admin-admins-*') ? 'pcoded-trigger active pcoded-trigger' : '' }}">
+                class="pcoded-hasmenu {{ Route::is('admin.orders.*') || Route::is('admin.reviews.*') || Route::is('admin.deliveries.*') || Route::is('admin.admins.*') ? 'pcoded-trigger active pcoded-trigger' : '' }}">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">{{__('Interactions')}}</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
-                    <li class="{{ Route::is('admin-orders-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-orders-list') }}">
+                    <li class="{{ Route::is('admin.orders.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.orders.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">{{__('Orders')}}</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Route::is('admin-reviews-*') ? 'active' : '' }}">
-                        <a href="{{ route('admin-reviews-list') }}">
+                    <li class="{{ Route::is('admin.reviews.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.reviews.list') }}">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">{{__('Reviews')}}</span>
                             <span class="pcoded-mcaret"></span>

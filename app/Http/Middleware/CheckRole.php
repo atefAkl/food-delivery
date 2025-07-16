@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
@@ -15,8 +16,15 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (!$request->user() || !$request->user()->hasRole($role)) {
-            abort(403, 'Unauthorized action.');
+        if (!Auth::check()) {
+            return redirect()->route('frontend.login');
+        }
+        
+        // استخدام hasRole من Spatie Laravel Permission
+        if (!$request->user()->hasRole($role)) {
+            // يمكننا إما إظهار رسالة خطأ أو إعادة التوجيه إلى الصفحة الرئيسية
+            return redirect()->route('frontend.home')
+                ->with('error', 'غير مصرح لك بالوصول إلى هذه الصفحة.');
         }
 
         return $next($request);

@@ -57,7 +57,7 @@ Route::middleware('auth')->name('frontend.')->group(function () {
     Route::get('/dishes/{dish}', [DishController::class, 'show'])->name('dishes.show');
 
     // مسارات خاصة بالعملاء
-    Route::middleware('role:customer')->group(function () {
+    Route::middleware(['user.type:customer'])->group(function () {
         Route::get('/customer/dashboard', [CustomerController::class, 'dashboard'])->name('customer.dashboard');
         Route::get('/cart', [CustomerController::class, 'cart'])->name('cart');
         Route::post('/cart/add', [CustomerController::class, 'addToCart'])->name('frontend.cart.add');
@@ -83,25 +83,25 @@ Route::middleware('auth')->name('frontend.')->group(function () {
     });
 
     // مسارات خاصة بالشيفات
-    Route::middleware('role:chef')->group(function () {
-        Route::get('/chef/dashboard', [ChefController::class, 'dashboard'])->name('frontend.chef.dashboard');
+    Route::group(['prefix' => 'chef', 'as' => 'frontend.chef.'], function () {
+        Route::get('/dashboard', [ChefController::class, 'dashboard'])->name('dashboard');
 
-        Route::get('/chef/dishes', [ChefController::class, 'dishes'])->name('frontend.chef.dishes');
-        Route::get('/chef/dishes/create', [ChefController::class, 'createDish'])->name('frontend.chef.dishes.create');
-        Route::post('/chef/dishes', [ChefController::class, 'storeDish'])->name('frontend.chef.dishes.store');
-        Route::get('/chef/dishes/{dish}/edit', [ChefController::class, 'editDish'])->name('frontend.chef.dishes.edit');
-        Route::put('/chef/dishes/{dish}', [ChefController::class, 'updateDish'])->name('frontend.chef.dishes.update');
-        Route::delete('/chef/dishes/{dish}', [ChefController::class, 'deleteDish'])->name('frontend.chef.dishes.delete');
+        Route::get('/dishes', [ChefController::class, 'dishes'])->name('dishes');
+        Route::get('/dishes/create', [ChefController::class, 'createDish'])->name('dishes.create');
+        Route::post('/dishes', [ChefController::class, 'storeDish'])->name('dishes.store');
+        Route::get('/dishes/{dish}/edit', [ChefController::class, 'editDish'])->name('dishes.edit');
+        Route::put('/dishes/{dish}', [ChefController::class, 'updateDish'])->name('dishes.update');
+        Route::delete('/dishes/{dish}', [ChefController::class, 'deleteDish'])->name('dishes.delete');
 
-        Route::get('/chef/orders', [ChefController::class, 'orders'])->name('frontend.chef.orders');
-        Route::get('/chef/orders/{order}', [ChefController::class, 'orderDetails'])->name('frontend.chef.orders.show');
-        Route::patch('/chef/orders/{order}/status', [ChefController::class, 'updateOrderStatus'])->name('frontend.chef.orders.status');
+        Route::get('/orders', [ChefController::class, 'orders'])->name('orders');
+        Route::get('/orders/{order}', [ChefController::class, 'orderDetails'])->name('orders.show');
+        Route::patch('/orders/{order}/status', [ChefController::class, 'updateOrderStatus'])->name('orders.status');
 
-        Route::get('/chef/reviews', [ChefController::class, 'reviews'])->name('frontend.chef.reviews');
+        Route::get('/reviews', [ChefController::class, 'reviews'])->name('reviews');
 
-        Route::get('/chef/earnings', [ChefController::class, 'earnings'])->name('frontend.chef.earnings');
-        Route::get('/chef/payouts', [ChefController::class, 'payouts'])->name('frontend.chef.payouts');
-        Route::post('/chef/payouts/request', [ChefController::class, 'requestPayout'])->name('frontend.chef.payouts.request');
+        Route::get('/earnings', [ChefController::class, 'earnings'])->name('earnings');
+        Route::get('/payouts', [ChefController::class, 'payouts'])->name('payouts');
+        Route::post('/payouts/request', [ChefController::class, 'requestPayout'])->name('payouts.request');
     });
 });
 

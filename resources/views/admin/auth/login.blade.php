@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <!-- Authentication card start -->
                 <div class="login-card card-block auth-body mr-auto ml-auto">
-                    <form class="md-float-material" method="POST" action="{{ route('admin-auth') }}">
+                    <form class="md-float-material" method="POST" action="{{ route('admin.auth') }}">
                         @csrf
 
                         <div class="text-center">
@@ -22,20 +22,20 @@
                             </div>
                             <hr />
                             <div class="input-group">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email Address">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Your Email Address">
                                 <span class="md-line"></span>
                             </div>
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger d-block mt-1" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                             <div class="input-group">
-                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                                 <span class="md-line"></span>
                             </div>
                             @error('password')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger d-block mt-1" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-5 col-xs-12 forgot-phone text-right">
-                                    <a href="{{ route('admin-password-reset') }}" class="text-right f-w-600 text-inverse">
+                                    <a href="{{ route('admin.password-reset') }}" class="text-right f-w-600 text-inverse">
                                         {{ session('locale', config('app.locale')) === 'ar' ? 'نسيت كلمة المرور؟' : 'Forgot Your Password?' }}</a>
                                 </div>
                             </div>

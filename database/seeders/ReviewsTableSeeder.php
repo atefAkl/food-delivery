@@ -49,7 +49,7 @@ class ReviewsTableSeeder extends Seeder
             // اختيار عشوائي للمستخدم والطاهي والطبق
             $customer = $customers->random();
             $chef = $chefs->random(); // يمكن استبداله بالطاهي المرتبط بالطبق إذا كان ذلك متاحًا
-
+            $dish = $dishes->random();
             // إنشاء تقييم عشوائي بين 1 و 5
             $rating = rand(1, 5);
 
@@ -60,6 +60,7 @@ class ReviewsTableSeeder extends Seeder
             $reviewsData[] = [
                 'customer_id' => $customer->id,
                 'chef_id' => $chef->id,
+                'dish_id' => $dish->id,
                 'rating' => $rating,
                 'comment' => $comment,
                 'created_at' => now()->subDays(rand(1, 30))->format('Y-m-d H:i:s'), // تاريخ عشوائي خلال الشهر الماضي

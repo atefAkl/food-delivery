@@ -93,7 +93,7 @@
                         <a class="mobile-search morphsearch-search" href="#">
                             <i class="ti-search"></i>
                         </a>
-                        <a href="{{ route('admin-dashboard') }}">
+                        <a href="{{ route('admin.dashboard') }}">
                             <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options">
@@ -187,7 +187,7 @@
                                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ti-layout-sidebar-left"></i> {{ session('locale', config('app.locale')) === 'ar' ? 'تسجيل الخروج' : 'Logout' }}
                                         </a>
-                                        <form id="logout-form" action="{{ route('admin-logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
                                     </li>

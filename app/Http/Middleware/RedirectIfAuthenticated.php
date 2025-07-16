@@ -23,10 +23,16 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 if ($guard === 'admin') {
                     return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
+                } elseif ($guard === 'customer') {
+                    return redirect(RouteServiceProvider::CUSTOMER_DASHBOARD);
+                } elseif ($guard === 'chef') {
+                    return redirect(RouteServiceProvider::CHEF_DASHBOARD);
                 }
             }
         }
-        return redirect(RouteServiceProvider::HOME);
+
+        // إذا لم يتم تسجيل الدخول، استمر في المعالجة
+        return $next($request);
 
         // return $next($request);
     }

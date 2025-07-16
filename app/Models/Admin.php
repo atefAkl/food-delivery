@@ -2,46 +2,44 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Authenticatable
+class Admin extends Model
 {
-    use HasApiTokens, Notifiable, HasRoles;
-
-    protected $guard = 'admin';
-    protected $table = 'admins';
+    use HasFactory;
+    
+    protected $primaryKey = 'id';
+    public $incrementing = false;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'id',
+        'department',
+        'access_level',
+        'last_login_at',
+        'is_active',
     ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
+    
+    protected $casts = [
+        'last_login_at' => 'datetime',
+        'is_active' => 'boolean',
     ];
 
     /**
-     * الحصول على الملف الشخصي للمشرف
+     * الحصول على المستخدم المرتبط بملف المشرف
      */
-    public function profile(): HasOne
+    public function user()
     {
-        return $this->hasOne(AdminProfile::class, 'admin_id', 'id');
+        return $this->belongsTo(User::class, 'id');
     }
-
+    
     /**
-     * إنشاء ملف شخصي فارغ للمشرف عند إنشاء حساب جديد
+     * الحصول على معلومات المهام المسندة للمشرف
      */
-    protected static function booted()
+    public function logs()
     {
-        static::created(function (Admin $admin) {
-            $admin->profile()->create();
-        });
+        // يمكن إضافة علاقات أخرى هنا إذا تم إنشاء النماذج المناسبة
+        // مثل سجلات النشاط أو المهام
+        return $this->hasMany(User::class, 'admin_id')->where('type', 'admin');
     }
 }

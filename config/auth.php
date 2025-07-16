@@ -42,7 +42,7 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users', // استخدام مزود users بدلاً من admins لأن جدول admins تم حذفه
         ],
     ],
 

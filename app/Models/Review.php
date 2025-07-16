@@ -35,6 +35,7 @@ class Review extends Model
      * @var array
      */
     protected $casts = [
+        'updated_at' => 'datetime',
         'created_at' => 'datetime',
     ];
 
