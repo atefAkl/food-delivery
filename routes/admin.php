@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ReviewController;
 
 Route::prefix('admin')->group(function () {
-    Route::middleware('guest:admin')->group(function () {
+    Route::middleware('guest:admin')->name('admin-')->group(function () {
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'login'])->name('auth');
         Route::post('password/reset', [AuthController::class, 'resetPassword'])->name('password-reset');

@@ -88,4 +88,15 @@ class User extends Authenticatable
     {
         return $this->addresses()->where('is_default', true)->first();
     }
+    
+    /**
+     * التحقق مما إذا كان المستخدم يملك دورًا معينًا
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->type === $role;
+    }
 }

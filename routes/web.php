@@ -18,3 +18,6 @@ Route::get('/', function () {
 
 // Include admin routes directly
 require base_path('routes/admin.php');
+
+// Include frontend routes for chefs and customers
+require base_path('routes/frontend.php');
